@@ -2,6 +2,8 @@
 
 namespace backend\controllers;
 
+use backend\models\AdminuserSignupForm;
+use backend\models\ResetpwdForm;
 use Yii;
 use common\models\Adminuser;
 use common\models\AdminuserSearch;
@@ -64,13 +66,32 @@ class AdminuserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Adminuser();
+        $model = new AdminuserSignupForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
         }
 
         return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionResetpwd($id)
+    {
+        $model = new ResetpwdForm();
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->resetPassword($id)) {
+                return $this->redirect(['index']);
+            }
+
+        }
+
+        return $this->render('resetpwd', [
             'model' => $model,
         ]);
     }

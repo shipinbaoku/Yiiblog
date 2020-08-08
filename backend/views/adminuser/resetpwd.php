@@ -7,26 +7,18 @@ use yii\widgets\ActiveForm;
 /* @var $model common\models\Adminuser */
 /* @var $form yii\widgets\ActiveForm */
 
-$this->title = '新增管理员';
+$this->title = '重置密码';
 $this->params['breadcrumbs'][] = ['label' => '管理员管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="adminuser-create">
+<div class="adminuser-resetpwd">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'nickname')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'password_repeat')->passwordInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'profile')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('保存', ['class' => 'btn btn-success']) ?>
