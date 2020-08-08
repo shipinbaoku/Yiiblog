@@ -50,8 +50,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     },
                     'privilege' => function ($url, $model, $key) {
                         $options = [
-                            'title' => Yii::t('yii', '密码重置'),
-                            'aria-label' => Yii::t('yii', '密码重置'),
+                            'title' => Yii::t('yii', '权限设置'),
+                            'aria-label' => Yii::t('yii', '权限设置'),
                             'data-ajax' => '0',
                         ];
                         return Html::a('<span class="glyphicon glyphicon-user"></span>', $url, $options);
